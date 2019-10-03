@@ -18,7 +18,7 @@ class DataCenter(Base):
     aggregate_switch = Column(String(255), nullable=True)
     fabric = Column(String(255), nullable=True)
     primary_dns = Column(String(255), nullable=True)
-    seconday_dns = Column(String(255), nullable=True)
+    secondary_dns = Column(String(255), nullable=True)
     load_balancer = Column(String(255), nullable=True)
     ats = Column(Boolean, default=True)
 

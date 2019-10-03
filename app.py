@@ -11,39 +11,18 @@ app.debug = True
 
 example_query = """
 {
-  allDataCenters(sort: [NAME_ASC, ID_ASC]) {
+  allDataCenters {
     edges {
       node {
         id
         name
-        department {
-          id
-          name
-        }
-        role {
-          id
-          name
-        }
+        fabric
       }
     }
   }
 }
-
-// all depts
-
-{ allDepartments {
-    edges {
-      node {
-        id
-        name
-      }
-    }
-  } 
-}
 """
-
-
-
+# add endpoint
 app.add_url_rule(
     "/graphql", view_func=GraphQLView.as_view("graphql", schema=schema, graphiql=True)
 )
@@ -55,7 +34,7 @@ def shutdown_session(exception=None):
 
 
 if __name__ == "__main__":
-    # init_db()
+    # init_db() => only when creating a new database
     app.run(
       host="0.0.0.0",
       port=5580,
