@@ -1,6 +1,7 @@
 #!.env/bin/python
 # app.py
 
+import os
 from db import db_session, init_db
 from flask import Flask
 from schema import schema
@@ -8,6 +9,8 @@ from flask_graphql import GraphQLView
 
 app = Flask(__name__)
 app.debug = True
+app.secret_key = os.urandom(64)
+app.port = 5580
 
 example_query = """
 {
@@ -35,8 +38,4 @@ def shutdown_session(exception=None):
 
 if __name__ == "__main__":
     # init_db() => only when creating a new database
-    app.run(
-      host="0.0.0.0",
-      port=5580,
-      debug=app.debug    
-)
+    app.start()

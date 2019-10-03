@@ -6,5 +6,5 @@ WORKDIR /app
 COPY . /app
 RUN pip install -r requirements.txt
 EXPOSE 5580
-CMD ["gunicorn", "-b", "0.0.0.0:5580", "-w", "4"]
+CMD ["gunicorn", "-b", "0.0.0.0:5580", "-w", "4", "wsgi:app"]
  
