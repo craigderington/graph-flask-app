@@ -69,26 +69,28 @@ Point your web browser to http://0.0.0.0:5580/graphql
 #### Example Queries
 
 ```
-{ allDatacenters {
-    edges {
-        node {
-            id
-            name
-            accessNetwork
-            streetAddress
-            city
-            state
-            fabric
+{
+    allDatacenters {
+        edges {
+            node {
+                id
+                name
+                streetAddress
+                city
+                state
+                accessNetwork
+                fabric
             }
         }
-    } 
+    }
 }
 
-{ allRouters {
-    edges {
-        node {
-            id
-            name
+{ 
+    allRouters {
+        edges {
+            node {
+                id
+                name
                 datacenter {
                     id
                     name
@@ -96,7 +98,7 @@ Point your web browser to http://0.0.0.0:5580/graphql
                 }
             }
         }
-    } 
+    }
 }
 
 ```
