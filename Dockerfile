@@ -1,4 +1,4 @@
-FROM python:3.6/alpine
+FROM python:3.6-alpine
 LABEL maintainer="Craig Derington <cderington@championsg.com>"
 RUN apk update && apk upgrade
 RUN apk add screen curl
