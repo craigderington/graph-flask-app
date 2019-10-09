@@ -22,6 +22,13 @@ class DataCenter(Base):
     load_balancer = Column(String(255), nullable=True)
     ats = Column(Boolean, default=True)
 
+    def __repr__(self):
+        if self.id and self.name:
+            return "{} {}".format(
+                self.id,
+                self.name
+            )
+
 
 class Router(Base):
     __tablename__ = "routers"
@@ -35,6 +42,13 @@ class Router(Base):
     domain = Column(String(255), nullable=True)
     datacenter_id = Column(Integer, ForeignKey("datacenters.id"))
     datacenter = relationship(DataCenter, backref=backref("datacenters", uselist=True, cascade="delete,all"))
+
+    def __repr__(self):
+        if self.id and self.name:
+            return "{} {}".format(
+                self.id,
+                self.name
+            )
 
 
 class Switch(Base):
@@ -55,6 +69,13 @@ class Switch(Base):
     ip_eth4 = Column(String(15), nullable=False)
     router_id = Column(Integer, ForeignKey("routers.id"))
     router = relationship(Router, backref=backref("routers", uselist=True, cascade="delete,all"))
+
+    def __repr__(self):
+        if self.id and self.name:
+            return "{} {}".format(
+                self.id,
+                self.name
+            )
 
 
 class Computer(Base):
@@ -77,7 +98,14 @@ class Computer(Base):
     installed_ram = Column(Integer)
     memory_type = Column(String(255), nullable=False)
     switch_id = Column(Integer, ForeignKey("switches.id"))
-    switch = relationship(Switch, backref=backref("switches", uselist=True, cascade="delete,all"))    
+    switch = relationship(Switch, backref=backref("switches", uselist=True, cascade="delete,all"))
+
+    def __repr__(self):
+        if self.id and self.name:
+            return "{} {}".format(
+                self.id,
+                self.name
+            )  
 
 
 class Process(Base):
@@ -92,3 +120,10 @@ class Process(Base):
     command = Column(String(255), nullable=False)
     computer_id = Column(Integer, ForeignKey("computers.id"))
     computer = relationship(Computer, backref=backref("computers", uselist=True, cascade="delete,all"))
+
+    def __repr__(self):
+        if self.id and self.name:
+            return "{} {}".format(
+                self.id,
+                self.name
+            )
