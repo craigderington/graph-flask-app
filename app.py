@@ -3,7 +3,7 @@
 
 import os
 from db import db_session, init_db
-from flask import Flask
+from flask import Flask, request, render_template
 from schema import schema
 from flask_graphql import GraphQLView
 
